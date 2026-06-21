@@ -1,42 +1,78 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>RSVP Perkahwinan Zulhilmi</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
 
-<div class="container">
+<html lang="ms">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <h1>Zulhilmi ❤️ Pasangan</h1>
+    <title>Zulhilmi & Athilah</title>
 
-    <h2>Majlis Perkahwinan</h2>
+    <link rel="stylesheet" href="style.css" />
 
-    <p>28 Ogos 2026</p>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Poppins:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-    <form id="rsvpForm">
+  <body>
+    <section class="hero">
+      <div class="overlay">
+        <p class="small-title">Walimatul Urus</p>
 
-        <input
-            type="text"
-            id="nama"
-            placeholder="Nama"
-            required>
+        <h1>
+          Muhammad Zulhilmi
+          <br />
+          &
+          <br />
+          Nor Athilah Syafiqah
+        </h1>
 
-        <input
-            type="number"
-            id="pax"
-            placeholder="Bilangan Hadir"
-            required>
+        <p class="date">06 September 2026</p>
 
-        <button type="submit">
-            Hantar RSVP
-        </button>
+        <button id="openInvitation">Buka Jemputan</button>
+      </div>
+    </section>
 
-    </form>
+    <section class="content">
+      <div class="section">
+        <h2>Assalamualaikum</h2>
 
-</div>
+        <p>
+          Dengan penuh kesyukuran ke hadrat Allah SWT, kami menjemput
+          Dato'/Datin/Tuan/Puan/ Encik/Cik ke majlis perkahwinan kami.
+        </p>
+      </div>
 
-<script src="script.js"></script>
+      <div class="section">
+        <h2>Countdown</h2>
 
-</body>
+        <div id="countdown"></div>
+      </div>
+
+      <div class="section">
+        <h2>Lokasi Majlis</h2>
+
+        <p>Mama Catering Event Hall</p>
+
+        <a class="btn-map" href="#" target="_blank"> Google Maps </a>
+
+        <a class="btn-map" href="#" target="_blank"> Waze </a>
+      </div>
+
+      <div class="section">
+        <h2>RSVP</h2>
+
+        <form id="rsvpForm">
+          <input type="text" id="nama" placeholder="Nama Tetamu" required />
+
+          <input type="number" id="pax" placeholder="Bilangan Hadir" required />
+
+          <button type="submit">Hantar RSVP</button>
+        </form>
+      </div>
+    </section>
+
+    <script src="script.js"></script>
+  </body>
 </html>
