@@ -1,78 +1,381 @@
 <!DOCTYPE html>
 
 <html lang="ms">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Zulhilmi & Athilah</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="style.css" />
+```
+<title>Zulhilmi & Athilah</title>
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Poppins:wght@300;400;500&display=swap"
-      rel="stylesheet"
-    />
-  </head>
+<link rel="stylesheet" href="style.css">
 
-  <body>
-    <section class="hero">
-      <div class="overlay">
-        <p class="small-title">Walimatul Urus</p>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+```
+
+</head>
+
+<body>
+
+```
+<!-- HERO -->
+<section id="hero">
+
+    <div class="hero-overlay">
+
+        <p class="hero-small">
+            Walimatul Urus
+        </p>
 
         <h1>
-          Muhammad Zulhilmi
-          <br />
-          &
-          <br />
-          Nor Athilah Syafiqah
+            Muhammad Zulhilmi
+            <br>
+            &
+            <br>
+            Nor Athilah Syafiqah
         </h1>
 
-        <p class="date">06 September 2026</p>
-
-        <button id="openInvitation">Buka Jemputan</button>
-      </div>
-    </section>
-
-    <section class="content">
-      <div class="section">
-        <h2>Assalamualaikum</h2>
-
-        <p>
-          Dengan penuh kesyukuran ke hadrat Allah SWT, kami menjemput
-          Dato'/Datin/Tuan/Puan/ Encik/Cik ke majlis perkahwinan kami.
+        <p class="hero-date">
+            06 September 2026
         </p>
-      </div>
 
-      <div class="section">
-        <h2>Countdown</h2>
+        <button id="openInvitation">
+            Buka Jemputan
+        </button>
 
-        <div id="countdown"></div>
-      </div>
+        <button id="musicBtn">
+            🎵 Mainkan Lagu
+        </button>
 
-      <div class="section">
-        <h2>Lokasi Majlis</h2>
+    </div>
 
-        <p>Mama Catering Event Hall</p>
+</section>
 
-        <a class="btn-map" href="#" target="_blank"> Google Maps </a>
 
-        <a class="btn-map" href="#" target="_blank"> Waze </a>
-      </div>
+<!-- UCAPAN -->
+<section class="section">
 
-      <div class="section">
-        <h2>RSVP</h2>
+    <h2>Assalamualaikum</h2>
+
+    <p>
+        Dengan penuh kesyukuran ke hadrat Allah SWT,
+        kami menjemput Dato', Datin, Tuan, Puan,
+        Encik dan Cik ke majlis perkahwinan kami.
+    </p>
+
+</section>
+
+
+<!-- COUNTDOWN -->
+<section id="countdown-section" class="section">
+
+    <h2>Detik Bahagia Kami</h2>
+
+    <div class="countdown-container">
+
+        <div class="count-card">
+            <span id="days">0</span>
+            <small>Hari</small>
+        </div>
+
+        <div class="count-card">
+            <span id="hours">0</span>
+            <small>Jam</small>
+        </div>
+
+        <div class="count-card">
+            <span id="minutes">0</span>
+            <small>Minit</small>
+        </div>
+
+        <div class="count-card">
+            <span id="seconds">0</span>
+            <small>Saat</small>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ATURCARA -->
+<section class="section">
+
+    <h2>Aturcara Majlis</h2>
+
+    <div class="timeline">
+
+        <div class="timeline-item">
+            <strong>11:00 AM</strong>
+            <p>Ketibaan Tetamu</p>
+        </div>
+
+        <div class="timeline-item">
+            <strong>12:30 PM</strong>
+            <p>Ketibaan Pengantin</p>
+        </div>
+
+        <div class="timeline-item">
+            <strong>01:00 PM</strong>
+            <p>Jamuan Makan</p>
+        </div>
+
+        <div class="timeline-item">
+            <strong>04:00 PM</strong>
+            <p>Majlis Bersurai</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- LOKASI -->
+<section class="section">
+
+    <h2>Lokasi Majlis</h2>
+
+    <p>
+        Mama Catering Event Hall
+    </p>
+
+    <div class="button-group">
+
+        <a
+            class="btn"
+            href="https://maps.app.goo.gl/jtqZL2jLPpqtNbMV9"
+            target="_blank">
+
+            Google Maps
+
+        </a>
+
+        <a
+            class="btn"
+            href="https://www.waze.com"
+            target="_blank">
+
+            Waze
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- RSVP -->
+<section class="section">
+
+    <button id="openRSVP" class="btn">
+        RSVP Sekarang
+    </button>
+
+</section>
+
+
+<!-- GALLERY -->
+<section class="section">
+
+    <h2>Galeri</h2>
+
+    <div class="gallery">
+
+        <img src="images/gallery1.jpg" alt="">
+        <img src="images/gallery2.jpg" alt="">
+        <img src="images/gallery3.jpg" alt="">
+
+    </div>
+
+</section>
+
+
+<!-- QR -->
+<section id="qr-section" class="section">
+
+    <h2>Lokasi & Hadiah</h2>
+
+    <div class="qr-wrapper">
+
+        <div class="qr-card">
+
+            <h3>QR Lokasi</h3>
+
+            <img
+                src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://maps.app.goo.gl/jtqZL2jLPpqtNbMV9"
+                alt="QR Maps">
+
+        </div>
+
+        <div class="qr-card">
+
+            <h3>QR CIMB</h3>
+
+            <img
+                src="images/qrbank.jpeg"
+                alt="QR Bank">
+
+        </div>
+
+    </div>
+
+</section>
+<section class="section">
+
+    <h2>Hubungi</h2>
+
+    <div class="button-group">
+
+        <a class="btn"
+           href="tel:0123456789">
+            📞 Haji Rosli
+        </a>
+
+        <a class="btn"
+           href="tel:0198765432">
+            📞 Hajjah Nooraini
+        </a>
+
+        <a class="btn"
+           href="https://wa.me/60123456789"
+           target="_blank">
+            💬 WhatsApp
+        </a>
+
+    </div>
+
+</section>
+<section class="section">
+
+    <h2>Simpan Ke Kalendar</h2>
+
+    <a class="btn"
+       href="event.ics"
+       download>
+        📅 Simpan Ke Kalendar
+    </a>
+
+</section>
+<section class="section">
+
+    <h2>Lokasi</h2>
+
+    <p>
+        Mama Catering Event Hall
+    </p>
+
+    <div class="button-group">
+
+        <a
+            class="btn"
+            href="https://maps.app.goo.gl/jtqZL2jLPpqtNbMV9"
+            target="_blank">
+
+            📍 Google Maps
+
+        </a>
+
+        <a
+            class="btn"
+            href="https://waze.com/ul"
+            target="_blank">
+
+            🚗 Waze
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+
+    <p>
+        Muhammad Zulhilmi ❤️ Nor Athilah Syafiqah
+    </p>
+
+    <p>
+        06 September 2026
+    </p>
+
+</footer>
+
+
+<!-- RSVP MODAL -->
+<div id="rsvpModal" class="modal">
+
+    <div class="modal-content">
+
+        <span id="closeModal">
+            &times;
+        </span>
+
+        <h2>RSVP Kehadiran</h2>
 
         <form id="rsvpForm">
-          <input type="text" id="nama" placeholder="Nama Tetamu" required />
 
-          <input type="number" id="pax" placeholder="Bilangan Hadir" required />
-
-          <button type="submit">Hantar RSVP</button>
+            <input
+                type="text"
+                id="nama"
+                placeholder="Nama Tetamu"
+                required>
+        
+            <select id="hadir" required>
+        
+                <option value="">
+                    Adakah anda akan hadir?
+                </option>
+        
+                <option value="Ya">
+                    Ya
+                </option>
+        
+                <option value="Tidak">
+                    Tidak
+                </option>
+        
+            </select>
+        
+            <select id="pax" required>
+        
+                <option value="">
+                    Bilangan Kehadiran
+                </option>
+        
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+        
+            </select>
+        
+            <textarea
+                id="ucapan"
+                placeholder="Ucapan (jika ada)">
+            </textarea>
+        
+            <button type="submit">
+                Hantar RSVP
+            </button>
+        
         </form>
-      </div>
-    </section>
 
-    <script src="script.js"></script>
-  </body>
+    </div>
+
+</div>
+
+
+<audio id="bgMusic" loop>
+    <source src="audio/lagu.mp3" type="audio/mpeg">
+</audio>
+
+<script src="script.js"></script>
+```
+
+</body>
+
 </html>

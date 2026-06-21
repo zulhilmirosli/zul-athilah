@@ -4,19 +4,29 @@
     box-sizing:border-box;
     }
     
-    body{
-    font-family:'Poppins',sans-serif;
-    background:#fdf6f6;
-    color:#4a3f40;
+    html{
+    scroll-behavior:smooth;
     }
     
-    .hero{
+    body{
+    font-family:'Poppins',sans-serif;
+    background:#faf3f4;
+    color:#4a3f40;
+    line-height:1.7;
+    }
+    
+    h1,h2,h3{
+    font-family:'Cormorant Garamond',serif;
+    }
+    
+    #hero{
     height:100vh;
-    background:linear-gradient(
-    rgba(0,0,0,.35),
-    rgba(0,0,0,.35)
+    background:
+    linear-gradient(
+    rgba(0,0,0,.45),
+    rgba(0,0,0,.45)
     ),
-    url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc');
+    url('https://images.unsplash.com/photo-1519741497674-611481863552');
     background-size:cover;
     background-position:center;
     display:flex;
@@ -25,52 +35,164 @@
     text-align:center;
     }
     
-    .overlay{
+    .hero-overlay{
     color:white;
     padding:20px;
     }
     
-    .small-title{
-    letter-spacing:3px;
-    margin-bottom:15px;
+    .hero-small{
+    letter-spacing:4px;
+    text-transform:uppercase;
+    margin-bottom:20px;
     }
     
-    h1{
-    font-family:'Cormorant Garamond',serif;
-    font-size:60px;
+    #hero h1{
+    font-size:4rem;
+    line-height:1.2;
     }
     
-    .date{
-    margin-top:15px;
-    font-size:18px;
-    }
-    
-    #openInvitation{
-    margin-top:25px;
-    padding:12px 30px;
-    border:none;
-    background:#d8a7b1;
-    color:white;
-    border-radius:30px;
-    cursor:pointer;
-    }
-    
-    .content{
-    padding:60px 20px;
+    .hero-date{
+    margin-top:20px;
+    margin-bottom:25px;
     }
     
     .section{
-    max-width:700px;
+    max-width:1000px;
     margin:auto;
-    margin-bottom:80px;
+    padding:80px 20px;
     text-align:center;
     }
     
     .section h2{
-    font-family:'Cormorant Garamond',serif;
-    font-size:42px;
-    margin-bottom:20px;
     color:#b76e79;
+    font-size:3rem;
+    margin-bottom:20px;
+    }
+    
+    button,
+    .btn{
+    display:inline-block;
+    padding:14px 28px;
+    border:none;
+    border-radius:30px;
+    background:#d8a7b1;
+    color:white;
+    text-decoration:none;
+    cursor:pointer;
+    margin:5px;
+    transition:.3s;
+    }
+    
+    button:hover,
+    .btn:hover{
+    transform:translateY(-2px);
+    }
+    
+    .countdown-container{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:20px;
+    margin-top:30px;
+    }
+    
+    .count-card{
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    min-width:130px;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    }
+    
+    .count-card span{
+    display:block;
+    font-size:2.5rem;
+    color:#b76e79;
+    font-weight:bold;
+    }
+    
+    .timeline{
+    max-width:600px;
+    margin:auto;
+    }
+    
+    .timeline-item{
+    background:white;
+    padding:20px;
+    margin-bottom:15px;
+    border-radius:15px;
+    box-shadow:0 10px 20px rgba(0,0,0,.05);
+    }
+    
+    .button-group{
+    margin-top:20px;
+    }
+    
+    .gallery{
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+    }
+    
+    .gallery img{
+    width:100%;
+    border-radius:20px;
+    height:300px;
+    object-fit:cover;
+    }
+    
+    .qr-wrapper{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:30px;
+    }
+    
+    .qr-card{
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 10px 20px rgba(0,0,0,.08);
+    }
+    
+    .qr-card img{
+    width:250px;
+    max-width:100%;
+    }
+    
+    footer{
+    background:#d8a7b1;
+    color:white;
+    text-align:center;
+    padding:30px;
+    }
+    
+    .modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.6);
+    justify-content:center;
+    align-items:center;
+    z-index:999;
+    }
+    
+    .modal-content{
+    background:white;
+    width:90%;
+    max-width:450px;
+    border-radius:20px;
+    padding:30px;
+    position:relative;
+    }
+    
+    #closeModal{
+    position:absolute;
+    right:20px;
+    top:10px;
+    font-size:2rem;
+    cursor:pointer;
     }
     
     input{
@@ -78,25 +200,22 @@
     padding:14px;
     margin-bottom:15px;
     border:1px solid #ddd;
-    border-radius:8px;
+    border-radius:10px;
     }
     
-    button{
-    padding:14px 30px;
-    background:#b76e79;
-    border:none;
-    color:white;
-    border-radius:8px;
-    cursor:pointer;
+    @media(max-width:768px){
+    
+    #hero h1{
+        font-size:2.5rem;
     }
     
-    .btn-map{
-    display:inline-block;
-    margin:10px;
-    padding:12px 20px;
-    background:#d8a7b1;
-    color:white;
-    text-decoration:none;
-    border-radius:8px;
+    .section h2{
+        font-size:2rem;
+    }
+    
+    .count-card{
+        min-width:100px;
+    }
+    
     }
     
