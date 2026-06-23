@@ -1,380 +1,309 @@
 <!DOCTYPE html>
-
 <html lang="ms">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Zulhilmi & Athilah</title>
-
-<link rel="stylesheet" href="style.css">
-
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zulhilmi & Athilah — 06 September 2026</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Josefin+Sans:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 </head>
-
 <body>
 
-<!-- HERO -->
-<section id="hero">
-
-    <div class="hero-overlay">
-
-        <p class="hero-small">
-            Walimatul Urus
-        </p>
-
-        <h1>
-            Muhammad Zulhilmi
-            <br>
-            &
-            <br>
-            Nor Athilah Syafiqah
-        </h1>
-
-        <p class="hero-date">
-            06 September 2026
-        </p>
-
-        <button id="openInvitation">
-            Buka Jemputan
-        </button>
-
-        <button id="musicBtn">
-            🎵 Mainkan Lagu
-        </button>
-
-    </div>
-
-</section>
-
-
-<!-- UCAPAN -->
-<section class="section">
-
-    <h2>Assalamualaikum</h2>
-
-    <p>
-        Dengan penuh kesyukuran ke hadrat Allah SWT,
-        kami menjemput Dato', Datin, Tuan, Puan,
-        Encik dan Cik ke majlis perkahwinan kami.
-    </p>
-
-</section>
-
-
-<!-- COUNTDOWN -->
-<section id="countdown-section" class="section">
-
-    <h2>Detik Bahagia Kami</h2>
-
-    <div class="countdown-container">
-
-        <div class="count-card">
-            <span id="days">0</span>
-            <small>Hari</small>
-        </div>
-
-        <div class="count-card">
-            <span id="hours">0</span>
-            <small>Jam</small>
-        </div>
-
-        <div class="count-card">
-            <span id="minutes">0</span>
-            <small>Minit</small>
-        </div>
-
-        <div class="count-card">
-            <span id="seconds">0</span>
-            <small>Saat</small>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ATURCARA -->
-<section class="section">
-
-    <h2>Aturcara Majlis</h2>
-
-    <div class="timeline">
-
-        <div class="timeline-item">
-            <strong>11:00 AM</strong>
-            <p>Ketibaan Tetamu</p>
-        </div>
-
-        <div class="timeline-item">
-            <strong>12:30 PM</strong>
-            <p>Ketibaan Pengantin</p>
-        </div>
-
-        <div class="timeline-item">
-            <strong>01:00 PM</strong>
-            <p>Jamuan Makan</p>
-        </div>
-
-        <div class="timeline-item">
-            <strong>04:00 PM</strong>
-            <p>Majlis Bersurai</p>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- LOKASI -->
-<section class="section">
-
-    <h2>Lokasi Majlis</h2>
-
-    <p>
-        Mama Catering Event Hall
-    </p>
-
-    <div class="button-group">
-
-        <a
-            class="btn"
-            href="https://maps.app.goo.gl/jtqZL2jLPpqtNbMV9"
-            target="_blank">
-
-            Google Maps
-
-        </a>
-
-        <a
-            class="btn"
-            href="https://www.waze.com"
-            target="_blank">
-
-            Waze
-
-        </a>
-
-    </div>
-
-</section>
-
-
-<!-- RSVP -->
-<section class="section">
-
-    <button id="openRSVP" class="btn">
-        RSVP Sekarang
+  <!-- STICKY NAV -->
+  <nav class="sticky-nav" role="navigation" aria-label="Navigasi jemputan">
+    <button class="nav-item active" onclick="navScrollTo('hero')" data-sec="hero">
+      <i class="ti ti-home" aria-hidden="true"></i>
+      Utama
     </button>
+    <button class="nav-item" onclick="navScrollTo('jadual')" data-sec="jadual">
+      <i class="ti ti-calendar" aria-hidden="true"></i>
+      Jadual
+    </button>
+    <button class="nav-item" onclick="navScrollTo('lokasi')" data-sec="lokasi">
+      <i class="ti ti-map-pin" aria-hidden="true"></i>
+      Lokasi
+    </button>
+    <button class="nav-item" onclick="navScrollTo('hadiah')" data-sec="hadiah">
+      <i class="ti ti-gift" aria-hidden="true"></i>
+      Hadiah
+    </button>
+    <button class="nav-item" onclick="navScrollTo('rsvp')" data-sec="rsvp">
+      <i class="ti ti-send" aria-hidden="true"></i>
+      RSVP
+    </button>
+  </nav>
 
-</section>
-
-
-<!-- GALLERY -->
-<section class="section">
-
-    <h2>Galeri</h2>
-
-    <div class="gallery">
-
-        <img src="images/images1.jpeg" alt="">
-        <img src="images/images2.jpeg" alt="">
-        <img src="images/images3.jpeg" alt="">
-        <img src="images/images4.jpeg" alt="">
-        <img src="images/images5.jpeg" alt="">
-        <img src="images/images6.jpeg" alt="">
-
+  <!-- HERO -->
+  <section class="inv-section hero-section" id="hero">
+    <p class="hero-walimah">Walimatul Urus</p>
+    <div class="hero-bismillah">بِسْمِ ٱللّٰهِ ٱلرَّحْمٰنِ ٱلرَّحِيمِ</div>
+    <h1 class="hero-names">
+      Muhammad Zulhilmi
+      <span class="hero-and">&amp;</span>
+      Nor Athilah Syafiqah
+    </h1>
+    <div class="hero-divider"></div>
+    <p class="hero-date-text">Ahad &bull; 06 September 2026</p>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="navScrollTo('ucapan')">Buka Jemputan</button>
+      <button class="btn-secondary" id="musicToggle">
+        <i class="ti ti-music" id="musicIcon" aria-hidden="true"></i>
+        <span id="musicLabel">Mainkan Lagu</span>
+      </button>
     </div>
+  </section>
 
-</section>
+  <!-- UCAPAN -->
+  <section class="inv-section" id="ucapan">
+    <p class="sec-label">Dengan Segala Hormat</p>
+    <h2 class="sec-title">Assalamualaikum</h2>
+    <div class="sec-line"></div>
+    <p class="ucapan-text">
+      Dengan penuh kesyukuran ke hadrat Allah SWT,<br>
+      kami menjemput Dato', Datin, Tuan, Puan,<br>
+      Encik dan Cik ke majlis perkahwinan kami.
+    </p>
+    <div class="family-card">
+      <p>
+        <strong>Haji Rosli bin Ahmad</strong><br>
+        &amp; Hajjah Nooraini binti Bakar<br>
+        <br>
+        dengan penuh rasa syukur<br>
+        menjemput kehadiran anda ke majlis<br>
+        <strong>Walimatul Urus</strong> putera-puteri kami
+      </p>
+    </div>
+  </section>
 
+  <!-- COUNTDOWN -->
+  <section class="inv-section" id="countdown">
+    <p class="sec-label">Detik Bahagia Kami</p>
+    <h2 class="sec-title">Menghitung Hari</h2>
+    <div class="sec-line"></div>
+    <div class="countdown-grid">
+      <div class="count-unit">
+        <span class="count-num" id="cdays">0</span>
+        <span class="count-lbl">Hari</span>
+      </div>
+      <div class="count-unit">
+        <span class="count-num" id="chours">0</span>
+        <span class="count-lbl">Jam</span>
+      </div>
+      <div class="count-unit">
+        <span class="count-num" id="cmins">0</span>
+        <span class="count-lbl">Minit</span>
+      </div>
+      <div class="count-unit">
+        <span class="count-num" id="csecs">0</span>
+        <span class="count-lbl">Saat</span>
+      </div>
+    </div>
+  </section>
 
-<!-- QR -->
-<section id="qr-section" class="section">
+  <!-- JADUAL -->
+  <section class="inv-section" id="jadual">
+    <p class="sec-label">Aturcara Majlis</p>
+    <h2 class="sec-title">Jadual Hari</h2>
+    <div class="sec-line"></div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">11.00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">Ketibaan Tetamu</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">12.30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">Ketibaan Pengantin</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">1.00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">Jamuan Makan</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">4.00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">Majlis Bersurai</div>
+      </div>
+    </div>
+  </section>
 
-    <h2>Lokasi & Hadiah</h2>
+  <!-- LOKASI -->
+  <section class="inv-section" id="lokasi">
+    <p class="sec-label">Tempat Majlis</p>
+    <h2 class="sec-title">Lokasi</h2>
+    <div class="sec-line"></div>
+    <p class="loc-name">Mama Catering Event Hall</p>
+    <p class="loc-address">Ahad, 06 September 2026<br>Bermula jam 11.00 pagi</p>
+    <div class="loc-qr-wrap">
+      <img
+        src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://maps.app.goo.gl/jtqZL2jLPpqtNbMV9&color=3a2d2f&bgcolor=fdf8f5"
+        alt="QR Lokasi">
+      <p class="loc-qr-hint">Imbas untuk lokasi</p>
+    </div>
+    <div class="loc-btns">
+      <a class="loc-btn" href="https://maps.app.goo.gl/jtqZL2jLPpqtNbMV9" target="_blank">
+        <i class="ti ti-map" aria-hidden="true"></i> Google Maps
+      </a>
+      <a class="loc-btn" href="https://www.waze.com/en/live-map/directions/my/kedah/padang-serai/mama-catering-event-hall-padang-serai?place=ChIJpSaLZADTSjARIUf0zJLtwQw" target="_blank">
+        <i class="ti ti-car" aria-hidden="true"></i> Waze
+      </a>
+      <a class="loc-btn" href="event.ics" download>
+        <i class="ti ti-calendar-plus" aria-hidden="true"></i> Simpan Tarikh
+      </a>
+    </div>
+  </section>
 
-    <div class="qr-wrapper">
+  <!-- GALLERY -->
+  <section class="inv-section" id="gallery">
+    <p class="sec-label">Kenangan Kami</p>
+    <h2 class="sec-title">Galeri</h2>
+    <div class="sec-line"></div>
+    <div class="gallery-grid">
+      <div class="gal-img tall">
+        <img src="images/images1.jpeg" alt="Gambar 1">
+        <i class="ti ti-photo" aria-hidden="true"></i>
+      </div>
+      <div class="gal-img">
+        <img src="images/images2.jpeg" alt="Gambar 2">
+        <i class="ti ti-photo" aria-hidden="true"></i>
+      </div>
+      <div class="gal-img">
+        <img src="images/images3.jpeg" alt="Gambar 3">
+        <i class="ti ti-photo" aria-hidden="true"></i>
+      </div>
+      <div class="gal-img tall">
+        <img src="images/images4.jpeg" alt="Gambar 4">
+        <i class="ti ti-photo" aria-hidden="true"></i>
+      </div>
+      <div class="gal-img">
+        <img src="images/images5.jpeg" alt="Gambar 5">
+        <i class="ti ti-photo" aria-hidden="true"></i>
+      </div>
+      <div class="gal-img">
+        <img src="images/images6.jpeg" alt="Gambar 6">
+        <i class="ti ti-photo" aria-hidden="true"></i>
+      </div>
+    </div>
+  </section>
 
-        <div class="qr-card">
-
-            <h3>QR Lokasi</h3>
-
-            <img
-                src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://maps.app.goo.gl/jtqZL2jLPpqtNbMV9"
-                alt="QR Maps">
-
+  <!-- HADIAH / QR -->
+  <section class="inv-section" id="hadiah">
+    <p class="sec-label">Dorongan Kasih</p>
+    <h2 class="sec-title">Hadiah</h2>
+    <div class="sec-line"></div>
+    <div class="qr-grid">
+      <!-- <div class="qr-card">
+        <p class="qr-card-title">QR Lokasi</p>
+        <img
+          src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://maps.app.goo.gl/jtqZL2jLPpqtNbMV9&color=3a2d2f&bgcolor=fdf8f5"
+          alt="QR Lokasi">
+      </div> -->
+      <div class="qr-card">
+        <p class="qr-card-title">QR CIMB</p>
+        <img src="images/qrbank.jpeg" alt="QR Bank CIMB"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <div class="qr-placeholder" style="display:none">
+          <i class="ti ti-qrcode" aria-hidden="true"></i>
         </div>
+      </div>
+    </div>
+    <p class="hadiah-note">Doa dan kehadiran anda adalah hadiah<br>yang paling bermakna buat kami.</p>
+  </section>
 
-        <div class="qr-card">
+  <!-- RSVP -->
+  <section class="inv-section" id="rsvp">
+    <p class="sec-label">Sahkan Kehadiran</p>
+    <h2 class="sec-title">RSVP</h2>
+    <div class="sec-line"></div>
 
-            <h3>QR CIMB</h3>
+    <div id="rsvpFormWrap" class="rsvp-form">
+      <input class="rsvp-input" type="text" id="rNama" placeholder="Nama Tetamu" required>
 
-            <img
-                src="images/qrbank.jpeg"
-                alt="QR Bank">
+      <div class="rsvp-radios">
+        <label class="rsvp-radio-label">
+          <input type="radio" name="hadir" value="Ya">
+          <i class="ti ti-check" aria-hidden="true"></i> Ya, hadir
+        </label>
+        <label class="rsvp-radio-label">
+          <input type="radio" name="hadir" value="Tidak">
+          <i class="ti ti-x" aria-hidden="true"></i> Tidak hadir
+        </label>
+      </div>
 
+      <div>
+        <p class="pax-label">Bilangan Tetamu</p>
+        <div class="pax-row" id="paxRow">
+          <button class="pax-btn" type="button" onclick="selectPax(this, 1)">1</button>
+          <button class="pax-btn" type="button" onclick="selectPax(this, 2)">2</button>
+          <button class="pax-btn" type="button" onclick="selectPax(this, 3)">3</button>
+          <button class="pax-btn" type="button" onclick="selectPax(this, 4)">4</button>
+          <button class="pax-btn" type="button" onclick="selectPax(this, 5)">5</button>
         </div>
+      </div>
 
+      <textarea class="rsvp-input rsvp-textarea" id="rUcapan"
+        placeholder="Ucapan untuk pengantin (jika ada)"></textarea>
+
+      <button class="submit-btn" id="submitBtn" onclick="submitRSVP()">Hantar RSVP</button>
     </div>
 
-</section>
-<section class="section">
-
-    <h2>Hubungi</h2>
-
-    <div class="button-group">
-
-        <a class="btn"
-           href="tel:0145361946">
-            📞 Haji Rosli
-        </a>
-
-        <a class="btn"
-           href="tel:0195685391">
-            📞 Hajjah Nooraini
-        </a>
-
-        <a class="btn"
-           href="https://wa.me/0145361946"
-           target="_blank">
-            💬 WhatsApp
-        </a>
-
+    <div class="rsvp-success" id="rsvpSuccess">
+      <i class="ti ti-heart" aria-hidden="true"></i>
+      <p class="sec-title" style="font-size:2rem">Terima Kasih</p>
+      <p>RSVP anda telah diterima.<br>Kami menantikan kehadiran anda.</p>
     </div>
+  </section>
 
-</section>
-<section class="section">
-
-    <h2>Simpan Ke Kalendar</h2>
-
-    <a class="btn"
-       href="event.ics"
-       download>
-        📅 Simpan Ke Kalendar
-    </a>
-
-</section>
-<section class="section">
-
-    <h2>Lokasi</h2>
-
-    <p>
-        Mama Catering Event Hall
-    </p>
-
-    <div class="button-group">
-
-        <a
-            class="btn"
-            href="https://maps.app.goo.gl/jtqZL2jLPpqtNbMV9"
-            target="_blank">
-
-            📍 Google Maps
-
-        </a>
-
-        <a
-            class="btn"
-            href="https://waze.com/ul"
-            target="_blank">
-
-            🚗 Waze
-
-        </a>
-
+  <!-- HUBUNGI -->
+  <section class="inv-section" id="hubungi">
+    <p class="sec-label">Ada Pertanyaan?</p>
+    <h2 class="sec-title">Hubungi Kami</h2>
+    <div class="sec-line"></div>
+    <div class="contact-grid">
+      <a class="contact-item" href="tel:0145361946">
+        <div class="contact-icon"><i class="ti ti-phone" aria-hidden="true"></i></div>
+        <div>
+          <p class="contact-name">Haji Rosli</p>
+          <p class="contact-sub">014-536 1946</p>
+        </div>
+      </a>
+      <a class="contact-item" href="tel:0195685391">
+        <div class="contact-icon"><i class="ti ti-phone" aria-hidden="true"></i></div>
+        <div>
+          <p class="contact-name">Hajjah Nooraini</p>
+          <p class="contact-sub">019-568 5391</p>
+        </div>
+      </a>
+      <a class="contact-item" href="https://wa.me/60145361946" target="_blank">
+        <div class="contact-icon"><i class="ti ti-brand-whatsapp" aria-hidden="true"></i></div>
+        <div>
+          <p class="contact-name">WhatsApp</p>
+          <p class="contact-sub">Haji Rosli</p>
+        </div>
+      </a>
     </div>
+  </section>
 
-</section>
+  <!-- FOOTER -->
+  <footer class="inv-footer">
+    <p class="footer-names">Zulhilmi &amp; Athilah</p>
+    <p>06 &bull; 09 &bull; 2026</p>
+    <p class="footer-doa">Semoga diberkati Allah SWT</p>
+  </footer>
 
+  <!-- FLOATING MUSIC BUTTON -->
+  <button class="music-fab" id="musicFab" aria-label="Togol muzik">
+    <i class="ti ti-music" id="fabIcon" aria-hidden="true"></i>
+  </button>
 
-<!-- FOOTER -->
-<footer>
-
-    <p>
-        Muhammad Zulhilmi ❤️ Nor Athilah Syafiqah
-    </p>
-
-    <p>
-        06 September 2026
-    </p>
-
-</footer>
-
-
-<!-- RSVP MODAL -->
-<div id="rsvpModal" class="modal">
-
-    <div class="modal-content">
-
-        <span id="closeModal">
-            &times;
-        </span>
-
-        <h2>RSVP Kehadiran</h2>
-
-        <form id="rsvpForm">
-
-            <input
-                type="text"
-                id="nama"
-                placeholder="Nama Tetamu"
-                required>
-        
-            <select id="hadir" required>
-        
-                <option value="">
-                    Adakah anda akan hadir?
-                </option>
-        
-                <option value="Ya">
-                    Ya
-                </option>
-        
-                <option value="Tidak">
-                    Tidak
-                </option>
-        
-            </select>
-        
-            <select id="pax" required>
-        
-                <option value="">
-                    Bilangan Kehadiran
-                </option>
-        
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-        
-            </select>
-        
-            <textarea
-                id="ucapan"
-                placeholder="Ucapan (jika ada)">
-            </textarea>
-        
-            <button type="submit">
-                Hantar RSVP
-            </button>
-        
-        </form>
-
-    </div>
-
-</div>
-
-
-<audio id="bgMusic" loop>
+  <!-- AUDIO -->
+  <audio id="bgMusic" loop>
     <source src="audio/lagu.mp3" type="audio/mpeg">
-</audio>
+  </audio>
 
-<script src="script.js"></script>
-
+  <script src="script.js"></script>
 </body>
-
 </html>
