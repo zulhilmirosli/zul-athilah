@@ -62,6 +62,70 @@ function navScrollTo(id) {
 
 window.navScrollTo = navScrollTo;
 
+const envelope =
+document.getElementById("envelope");
+
+const envOpenBtn =
+document.getElementById("envOpenBtn");
+
+const envelopeScreen =
+document.getElementById("envelopeScreen");
+
+const mainInvitation =
+document.getElementById("mainInvitation");
+
+let invitationOpened = false;
+
+function openInvitation() {
+
+if(invitationOpened) return;
+
+invitationOpened = true;
+
+envelope.classList.add(
+    "opened"
+);
+
+setTimeout(() => {
+
+    envelopeScreen.classList.add(
+        "fade-out"
+    );
+
+    setTimeout(() => {
+
+        envelopeScreen.style.display =
+            "none";
+
+        mainInvitation.classList.remove(
+            "hidden"
+        );
+
+        try {
+
+            music.play();
+
+            updateMusicUI(true);
+
+        } catch(err){}
+
+    },1000);
+
+},1800);
+
+}
+
+envOpenBtn?.addEventListener(
+"click",
+openInvitation
+);
+
+envelope?.addEventListener(
+"click",
+openInvitation
+);
+
+
 
 // =================================================
 // ACTIVE NAV HIGHLIGHT
@@ -176,6 +240,106 @@ musicFab.addEventListener(
     toggleMusic
 );
 
+function createPetalAnimation(canvasId){
+
+const canvas =
+    document.getElementById(
+        canvasId
+    );
+
+if(!canvas) return;
+
+const ctx =
+    canvas.getContext("2d");
+
+function resize(){
+
+    canvas.width =
+        window.innerWidth;
+
+    canvas.height =
+        window.innerHeight;
+}
+
+resize();
+
+window.addEventListener(
+    "resize",
+    resize
+);
+
+const petals = [];
+
+for(let i=0;i<45;i++){
+
+    petals.push({
+
+        x:Math.random()*canvas.width,
+        y:Math.random()*canvas.height,
+        size:Math.random()*8+3,
+        speed:Math.random()*1+0.5,
+        drift:(Math.random()-0.5)*1.5
+    });
+}
+
+function animate(){
+
+    ctx.clearRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+    petals.forEach(p=>{
+
+        ctx.fillStyle =
+            "rgba(255,235,240,0.55)";
+
+        ctx.beginPath();
+
+        ctx.ellipse(
+            p.x,
+            p.y,
+            p.size,
+            p.size*0.6,
+            Math.PI/4,
+            0,
+            Math.PI*2
+        );
+
+        ctx.fill();
+
+        p.y += p.speed;
+        p.x += p.drift;
+
+        if(p.y > canvas.height){
+
+            p.y = -20;
+
+            p.x =
+                Math.random()
+                * canvas.width;
+        }
+    });
+
+    requestAnimationFrame(
+        animate
+    );
+}
+
+animate();
+
+}
+
+createPetalAnimation(
+"petalCanvas"
+);
+
+createPetalAnimation(
+"heroPetalCanvas"
+);
+
 
 // =================================================
 // RSVP
@@ -203,29 +367,29 @@ function selectPax(button, pax) {
 
 window.selectPax = selectPax;
 
-let musicStarted = false;
+// let musicStarted = false;
 
-window.addEventListener(
-    "scroll",
-    async () => {
+// window.addEventListener(
+//     "scroll",
+//     async () => {
 
-        if(
-            !musicStarted &&
-            window.scrollY > 100
-        ){
+//         if(
+//             !musicStarted &&
+//             window.scrollY > 100
+//         ){
 
-            try{
+//             try{
 
-                await music.play();
+//                 await music.play();
 
-                updateMusicUI(true);
+//                 updateMusicUI(true);
 
-                musicStarted = true;
+//                 musicStarted = true;
 
-            }catch(err){}
-        }
-    }
-);
+//             }catch(err){}
+//         }
+//     }
+// );
 
 
 // =================================================
@@ -324,3 +488,81 @@ async function submitRSVP() {
 }
 
 window.submitRSVP = submitRSVP;
+function spawnButterflies(){
+
+const container =
+    document.getElementById(
+        "butterflyContainer"
+    );
+
+if(!container) return;
+
+for(let i=0;i<8;i++){
+
+    const butterfly =
+        document.createElement(
+            "div"
+        );
+
+    butterfly.className =
+        "butterfly";
+
+    butterfly.innerHTML = `
+    <svg width="30"
+         height="30"
+         viewBox="0 0 30 30">
+
+        <path
+        fill="rgba(238, 181, 200, 0.9)"
+        d="
+        M15 15
+        C5 0 0 10 8 18
+        C0 25 8 30 15 20
+        C22 30 30 25 22 18
+        C30 10 25 0 15 15Z"/>
+    </svg>
+    `;
+
+    butterfly.style.left =
+        Math.random()*100+"vw";
+
+    butterfly.style.top =
+        Math.random()*100+"vh";
+
+    const endX =
+        (Math.random()*600)-300;
+
+    const endY =
+        -500-(Math.random()*200);
+
+    butterfly.style.setProperty(
+        "--fly-end",
+        `translate(${endX}px,${endY}px)`
+    );
+
+    butterfly.style.animationDuration =
+        (3+Math.random()*2)+"s";
+
+    container.appendChild(
+        butterfly
+    );
+
+    setTimeout(()=>{
+
+        butterfly.remove();
+
+    },5000);
+}
+
+}
+
+document
+.querySelectorAll(".nav-item")
+.forEach(btn=>{
+
+btn.addEventListener(
+    "click",
+    spawnButterflies
+);
+
+});
