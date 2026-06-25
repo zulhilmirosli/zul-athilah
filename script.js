@@ -1,5 +1,5 @@
 const WEBAPP_URL =
-"https://script.google.com/macros/s/AKfycbwJ-pCNHCawTtT1xKtFCYzAEavrGXRsHmVYukTmja06hg0WPM9d6CsGH3L45MG2ZbH45w/exec";
+  "https://script.google.com/macros/s/AKfycbwJ-pCNHCawTtT1xKtFCYzAEavrGXRsHmVYukTmja06hg0WPM9d6CsGH3L45MG2ZbH45w/exec";
 
 // =================================================
 // COUNTDOWN
@@ -8,361 +8,244 @@ const WEBAPP_URL =
 const weddingDate = new Date("2026-09-06T11:00:00");
 
 function updateCountdown() {
+  const now = new Date();
+  const diff = weddingDate - now;
 
-    const now = new Date();
-    const diff = weddingDate - now;
+  if (diff <= 0) {
+    document.getElementById("cdays").textContent = "0";
+    document.getElementById("chours").textContent = "0";
+    document.getElementById("cmins").textContent = "0";
+    document.getElementById("csecs").textContent = "0";
 
-    if (diff <= 0) {
+    return;
+  }
 
-        document.getElementById("cdays").textContent = "0";
-        document.getElementById("chours").textContent = "0";
-        document.getElementById("cmins").textContent = "0";
-        document.getElementById("csecs").textContent = "0";
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
 
-        return;
-    }
+  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
 
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const mins = Math.floor((diff / (1000 * 60)) % 60);
 
-    const hours =
-        Math.floor((diff / (1000 * 60 * 60)) % 24);
+  const secs = Math.floor((diff / 1000) % 60);
 
-    const mins =
-        Math.floor((diff / (1000 * 60)) % 60);
-
-    const secs =
-        Math.floor((diff / 1000) % 60);
-
-    document.getElementById("cdays").textContent = days;
-    document.getElementById("chours").textContent = hours;
-    document.getElementById("cmins").textContent = mins;
-    document.getElementById("csecs").textContent = secs;
+  document.getElementById("cdays").textContent = days;
+  document.getElementById("chours").textContent = hours;
+  document.getElementById("cmins").textContent = mins;
+  document.getElementById("csecs").textContent = secs;
 }
 
 setInterval(updateCountdown, 1000);
 updateCountdown();
-
 
 // =================================================
 // NAVIGATION SCROLL
 // =================================================
 
 function navScrollTo(id) {
+  const section = document.getElementById(id);
 
-    const section = document.getElementById(id);
-
-    if (section) {
-
-        section.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-        });
-    }
+  if (section) {
+    section.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }
 }
 
 window.navScrollTo = navScrollTo;
 
-const envelope =
-document.getElementById("envelope");
+const envelope = document.getElementById("envelope");
 
-const envOpenBtn =
-document.getElementById("envOpenBtn");
+const envOpenBtn = document.getElementById("envOpenBtn");
 
-const envelopeScreen =
-document.getElementById("envelopeScreen");
+const envelopeScreen = document.getElementById("envelopeScreen");
 
-const mainInvitation =
-document.getElementById("mainInvitation");
+const mainInvitation = document.getElementById("mainInvitation");
 
 let invitationOpened = false;
 
 function openInvitation() {
+  if (invitationOpened) return;
 
-if(invitationOpened) return;
+  invitationOpened = true;
 
-invitationOpened = true;
+  envelope.classList.add("opened");
 
-envelope.classList.add(
-    "opened"
-);
-
-setTimeout(() => {
-
-    envelopeScreen.classList.add(
-        "fade-out"
-    );
+  setTimeout(() => {
+    envelopeScreen.classList.add("fade-out");
 
     setTimeout(() => {
+      envelopeScreen.style.display = "none";
 
-        envelopeScreen.style.display =
-            "none";
+      mainInvitation.classList.remove("hidden");
 
-        mainInvitation.classList.remove(
-            "hidden"
-        );
+      try {
+        music.play();
 
-        try {
-
-            music.play();
-
-            updateMusicUI(true);
-
-        } catch(err){}
-
-    },1000);
-
-},1800);
-
+        updateMusicUI(true);
+      } catch (err) {}
+    }, 1000);
+  }, 1800);
 }
 
-envOpenBtn?.addEventListener(
-"click",
-openInvitation
-);
+envOpenBtn?.addEventListener("click", openInvitation);
 
-envelope?.addEventListener(
-"click",
-openInvitation
-);
-
-
+envelope?.addEventListener("click", openInvitation);
 
 // =================================================
 // ACTIVE NAV HIGHLIGHT
 // =================================================
 
-const navButtons =
-document.querySelectorAll(".nav-item");
+const navButtons = document.querySelectorAll(".nav-item");
 
-const sections =
-document.querySelectorAll(".inv-section");
+const sections = document.querySelectorAll(".inv-section");
 
 window.addEventListener("scroll", () => {
+  let current = "";
 
-    let current = "";
+  sections.forEach((section) => {
+    const sectionTop = section.offsetTop - 120;
 
-    sections.forEach(section => {
+    if (window.scrollY >= sectionTop) {
+      current = section.id;
+    }
+  });
 
-        const sectionTop =
-            section.offsetTop - 120;
+  navButtons.forEach((btn) => {
+    btn.classList.remove("active");
 
-        if (window.scrollY >= sectionTop) {
-
-            current = section.id;
-        }
-    });
-
-    navButtons.forEach(btn => {
-
-        btn.classList.remove("active");
-
-        if (
-            btn.dataset.sec === current
-        ) {
-            btn.classList.add("active");
-        }
-    });
+    if (btn.dataset.sec === current) {
+      btn.classList.add("active");
+    }
+  });
 });
-
 
 // =================================================
 // MUSIC
 // =================================================
 
-const music =
-document.getElementById("bgMusic");
+const music = document.getElementById("bgMusic");
 
-const musicToggle =
-document.getElementById("musicToggle");
+const musicToggle = document.getElementById("musicToggle");
 
-const musicLabel =
-document.getElementById("musicLabel");
+const musicLabel = document.getElementById("musicLabel");
 
-const musicFab =
-document.getElementById("musicFab");
+const musicFab = document.getElementById("musicFab");
 
-const musicIcon =
-document.getElementById("musicIcon");
+const musicIcon = document.getElementById("musicIcon");
 
-const fabIcon =
-document.getElementById("fabIcon");
+const fabIcon = document.getElementById("fabIcon");
 
 function updateMusicUI(isPlaying) {
+  if (isPlaying) {
+    musicLabel.textContent = "Pause Lagu";
 
-    if (isPlaying) {
+    musicIcon.classList.add("spin");
+    fabIcon.classList.add("spin");
+  } else {
+    musicLabel.textContent = "Mainkan Lagu";
 
-        musicLabel.textContent =
-        "Pause Lagu";
-
-        musicIcon.classList.add("spin");
-        fabIcon.classList.add("spin");
-
-    } else {
-
-        musicLabel.textContent =
-        "Mainkan Lagu";
-
-        musicIcon.classList.remove("spin");
-        fabIcon.classList.remove("spin");
-    }
+    musicIcon.classList.remove("spin");
+    fabIcon.classList.remove("spin");
+  }
 }
 
 async function toggleMusic() {
+  try {
+    if (music.paused) {
+      await music.play();
 
-    try {
+      updateMusicUI(true);
+    } else {
+      music.pause();
 
-        if (music.paused) {
-
-            await music.play();
-
-            updateMusicUI(true);
-
-        } else {
-
-            music.pause();
-
-            updateMusicUI(false);
-        }
-
-    } catch (err) {
-
-        console.error(err);
+      updateMusicUI(false);
     }
+  } catch (err) {
+    console.error(err);
+  }
 }
 
-musicToggle.addEventListener(
-    "click",
-    toggleMusic
-);
+musicToggle.addEventListener("click", toggleMusic);
 
-musicFab.addEventListener(
-    "click",
-    toggleMusic
-);
+musicFab.addEventListener("click", toggleMusic);
 
-function createPetalAnimation(canvasId){
+function createPetalAnimation(canvasId) {
+  const canvas = document.getElementById(canvasId);
 
-const canvas =
-    document.getElementById(
-        canvasId
-    );
+  if (!canvas) return;
 
-if(!canvas) return;
+  const ctx = canvas.getContext("2d");
 
-const ctx =
-    canvas.getContext("2d");
+  function resize() {
+    canvas.width = window.innerWidth;
 
-function resize(){
+    canvas.height = window.innerHeight;
+  }
 
-    canvas.width =
-        window.innerWidth;
+  resize();
 
-    canvas.height =
-        window.innerHeight;
-}
+  window.addEventListener("resize", resize);
 
-resize();
+  const petals = [];
 
-window.addEventListener(
-    "resize",
-    resize
-);
-
-const petals = [];
-
-for(let i=0;i<45;i++){
-
+  for (let i = 0; i < 45; i++) {
     petals.push({
-
-        x:Math.random()*canvas.width,
-        y:Math.random()*canvas.height,
-        size:Math.random()*8+3,
-        speed:Math.random()*1+0.5,
-        drift:(Math.random()-0.5)*1.5
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      size: Math.random() * 8 + 3,
+      speed: Math.random() * 1 + 0.5,
+      drift: (Math.random() - 0.5) * 1.5,
     });
-}
+  }
 
-function animate(){
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    ctx.clearRect(
-        0,
-        0,
-        canvas.width,
-        canvas.height
-    );
+    petals.forEach((p) => {
+      ctx.fillStyle = "rgba(255,235,240,0.55)";
 
-    petals.forEach(p=>{
+      ctx.beginPath();
 
-        ctx.fillStyle =
-            "rgba(255,235,240,0.55)";
+      ctx.ellipse(p.x, p.y, p.size, p.size * 0.6, Math.PI / 4, 0, Math.PI * 2);
 
-        ctx.beginPath();
+      ctx.fill();
 
-        ctx.ellipse(
-            p.x,
-            p.y,
-            p.size,
-            p.size*0.6,
-            Math.PI/4,
-            0,
-            Math.PI*2
-        );
+      p.y += p.speed;
+      p.x += p.drift;
 
-        ctx.fill();
+      if (p.y > canvas.height) {
+        p.y = -20;
 
-        p.y += p.speed;
-        p.x += p.drift;
-
-        if(p.y > canvas.height){
-
-            p.y = -20;
-
-            p.x =
-                Math.random()
-                * canvas.width;
-        }
+        p.x = Math.random() * canvas.width;
+      }
     });
 
-    requestAnimationFrame(
-        animate
-    );
+    requestAnimationFrame(animate);
+  }
+
+  animate();
 }
 
-animate();
+createPetalAnimation("petalCanvas");
 
-}
-
-createPetalAnimation(
-"petalCanvas"
-);
-
-createPetalAnimation(
-"heroPetalCanvas"
-);
-
+createPetalAnimation("heroPetalCanvas");
 
 // =================================================
 // RSVP
 // =================================================
 
-let selectedPax = 1;
+let selectedPax = 0;
 
 function selectPax(button, pax) {
+  selectedPax = pax;
+  clearErrors();
 
-    selectedPax = pax;
+  document.querySelectorAll(".pax-btn").forEach((btn) => {
+    btn.classList.remove("selected");
+  });
 
-    document
-        .querySelectorAll(".pax-btn")
-        .forEach(btn => {
-
-            btn.classList.remove(
-                "selected"
-            );
-        });
-
-    button.classList.add(
-        "selected"
-    );
+  button.classList.add("selected");
 }
 
 window.selectPax = selectPax;
@@ -391,121 +274,139 @@ window.selectPax = selectPax;
 //     }
 // );
 
-
 // =================================================
 // SUBMIT RSVP
 // =================================================
+function clearErrors() {
+  document.querySelectorAll(".form-error").forEach((el) => {
+    el.style.display = "none";
 
-async function submitRSVP() {
+    el.textContent = "";
+  });
 
-    const nama =
-        document
-        .getElementById("rNama")
-        .value
-        .trim();
-    const nameRegex = /^[A-Za-zÀ-ÿ\s'@.-]+$/;
-
-    if (!nameRegex.test(nama)) {
-      alert("Nama hanya boleh mengandungi huruf.");
-
-      return;
-    }
-    const hadir =
-        document.querySelector(
-            'input[name="hadir"]:checked'
-        );
-
-    const ucapan =
-        document
-        .getElementById("rUcapan")
-        .value
-        .trim();
-
-    if (!nama) {
-
-        alert("Sila masukkan nama.");
-        return;
-    }
-
-    if (!hadir) {
-
-        alert(
-            "Sila pilih status kehadiran."
-        );
-
-        return;
-    }
-
-    const submitBtn =
-        document.getElementById(
-            "submitBtn"
-        );
-
-    submitBtn.disabled = true;
-    submitBtn.textContent =
-        "Menghantar...";
-
-    try {
-
-        const pax =
-    hadir.value === "Ya"
-    ? selectedPax
-    : 0;
-        await fetch(WEBAPP_URL, {
-          method: "POST",
-          body: JSON.stringify({
-            nama,
-            hadir: hadir.value,
-            pax,
-            ucapan,
-          }),
-        });
-
-        document
-            .getElementById(
-                "rsvpFormWrap"
-            )
-            .style.display = "none";
-
-        document
-            .getElementById(
-                "rsvpSuccess"
-            )
-            .style.display = "flex";
-
-    } catch (error) {
-
-        console.error(error);
-
-        alert(
-            "Gagal menghantar RSVP. Sila cuba semula."
-        );
-
-        submitBtn.disabled = false;
-        submitBtn.textContent =
-            "Hantar RSVP";
-    }
+  document.querySelectorAll(".input-error").forEach((el) => {
+    el.classList.remove("input-error");
+  });
 }
 
-window.submitRSVP = submitRSVP;
-function spawnButterflies(){
+function showError(id, message, target) {
+  const error = document.getElementById(id);
 
-const container =
-    document.getElementById(
-        "butterflyContainer"
+  error.textContent = message;
+
+  error.style.display = "block";
+
+  if (target) {
+    target.classList.add("input-error");
+  }
+}
+async function submitRSVP() {
+  clearErrors();
+  const nama = document.getElementById("rNama").value.trim();
+
+  const nameRegex = /^[A-Za-zÀ-ÿ\s'@.-]+$/;
+
+  if (!nama) {
+    showError(
+      "namaError",
+      "Sila masukkan nama anda.",
+      document.getElementById("rNama"),
     );
 
-if(!container) return;
+    return;
+  }
 
-for(let i=0;i<8;i++){
+  if (!nameRegex.test(nama)) {
+    showError(
+      "namaError",
+      "Nama hanya boleh mengandungi huruf.",
+      document.getElementById("rNama"),
+    );
 
-    const butterfly =
-        document.createElement(
-            "div"
-        );
+    return;
+  }
+  const hadir = document.querySelector('input[name="hadir"]:checked');
 
-    butterfly.className =
-        "butterfly";
+  const ucapan = document.getElementById("rUcapan").value.trim();
+
+  if (!hadir) {
+    showError("hadirError", "Sila pilih status kehadiran.");
+
+    return;
+  }
+
+  if (hadir.value === "Ya" && selectedPax === 0) {
+    showError("paxError", "Sila pilih bilangan tetamu.");
+
+    return;
+  }
+
+  const submitBtn = document.getElementById("submitBtn");
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Menghantar...";
+
+  try {
+    const pax = hadir.value === "Ya" ? selectedPax : 0;
+    await fetch(WEBAPP_URL, {
+      method: "POST",
+      body: JSON.stringify({
+        nama,
+        hadir: hadir.value,
+        pax,
+        ucapan,
+      }),
+    });
+
+    document.getElementById("rsvpFormWrap").style.display = "none";
+
+    document.getElementById("rsvpSuccess").style.display = "flex";
+  } catch (error) {
+    console.error(error);
+
+    showError(
+      "hadirError",
+      "Maaf, RSVP gagal dihantar. Sila cuba sebentar lagi.",
+    );
+
+    submitBtn.disabled = false;
+    submitBtn.textContent = "Hantar RSVP";
+  }
+}
+const hadirRadios = document.querySelectorAll("input[name='hadir']");
+const paxSection = document.getElementById("paxSection");
+
+hadirRadios.forEach((radio) => {
+  radio.addEventListener("change", () => {
+    if (radio.value === "Ya") {
+      paxSection.style.display = "block";
+
+      selectedPax = 0;
+
+      document
+        .querySelectorAll(".pax-btn")
+        .forEach((btn) => btn.classList.remove("selected"));
+    } else {
+      paxSection.style.display = "none";
+
+      selectedPax = 0;
+
+      document
+        .querySelectorAll(".pax-btn")
+        .forEach((btn) => btn.classList.remove("selected"));
+    }
+  });
+});
+window.submitRSVP = submitRSVP;
+function spawnButterflies() {
+  const container = document.getElementById("butterflyContainer");
+
+  if (!container) return;
+
+  for (let i = 0; i < 8; i++) {
+    const butterfly = document.createElement("div");
+
+    butterfly.className = "butterfly";
 
     butterfly.innerHTML = `
     <svg width="30"
@@ -523,46 +424,55 @@ for(let i=0;i<8;i++){
     </svg>
     `;
 
-    butterfly.style.left =
-        Math.random()*100+"vw";
+    butterfly.style.left = Math.random() * 100 + "vw";
 
-    butterfly.style.top =
-        Math.random()*100+"vh";
+    butterfly.style.top = Math.random() * 100 + "vh";
 
-    const endX =
-        (Math.random()*600)-300;
+    const endX = Math.random() * 600 - 300;
 
-    const endY =
-        -500-(Math.random()*200);
+    const endY = -500 - Math.random() * 200;
 
-    butterfly.style.setProperty(
-        "--fly-end",
-        `translate(${endX}px,${endY}px)`
-    );
+    butterfly.style.setProperty("--fly-end", `translate(${endX}px,${endY}px)`);
 
-    butterfly.style.animationDuration =
-        (3+Math.random()*2)+"s";
+    butterfly.style.animationDuration = 3 + Math.random() * 2 + "s";
 
-    container.appendChild(
-        butterfly
-    );
+    container.appendChild(butterfly);
 
-    setTimeout(()=>{
-
-        butterfly.remove();
-
-    },5000);
+    setTimeout(() => {
+      butterfly.remove();
+    }, 5000);
+  }
 }
 
+document.querySelectorAll(".nav-item").forEach((btn) => {
+  btn.addEventListener("click", spawnButterflies);
+});
+
+function copyAccount() {
+  const account = "7632833177";
+
+  navigator.clipboard.writeText(account);
+
+  const btn = document.querySelector(".copy-account-btn");
+
+  btn.innerHTML = `
+        <i class="ti ti-check"></i>
+        Disalin
+    `;
+
+  setTimeout(() => {
+    btn.innerHTML = `
+            <i class="ti ti-copy"></i>
+            Salin Nombor Akaun
+        `;
+  }, 2000);
 }
 
-document
-.querySelectorAll(".nav-item")
-.forEach(btn=>{
-
-btn.addEventListener(
-    "click",
-    spawnButterflies
-);
-
+document.getElementById("rNama").addEventListener("input", () => {
+  clearErrors();
+});
+hadirRadios.forEach((r) => {
+  r.addEventListener("change", () => {
+    clearErrors();
+  });
 });
