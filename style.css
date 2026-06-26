@@ -155,14 +155,14 @@ a {
 }
 
 /* Sections */
-.inv-section {
-  min-height: 100vh;
-  padding: 90px 24px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+.inv-section{
+    min-height:100vh;
+    padding:90px 24px;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+    align-items:center;
+    text-align:center;
 }
 
 .inv-section:nth-child(even) {
@@ -311,6 +311,7 @@ a {
   font-size: clamp(36px, 6vw, 52px);
   color: var(--rose-dark);
   margin-top: 8px;
+  margin-bottom:0;
 }
 
 .sec-line {
@@ -318,6 +319,22 @@ a {
   height: 2px;
   background: var(--rose-soft);
   margin: 18px auto 32px;
+}
+
+.sec-divider{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin:2px auto 18px;
+}
+
+.sec-divider img{
+    width:min(380px,90%);
+    height:auto;
+    display:block;
+    opacity:.95;
+    user-select:none;
+    pointer-events:none;
 }
 
 /* Cards */
